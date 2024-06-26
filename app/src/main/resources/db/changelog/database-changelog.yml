@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: mateuscapoani
+      comment: Criar tabela url
+      changes:
+        - createTable:
+            tableName: url_encurtada
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_url_encurtada
+                    nullable: false
+              - column:
+                  name: url_original
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: url_curta
+                  type: VARCHAR(15)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: data_criacao
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false

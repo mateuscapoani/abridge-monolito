@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: app
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/monolito
+    username: monolito
+    password: monolito
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:db/changelog/database-changelog.yml
+    enabled: true
+
+encurtador:
+  host: 'http://localhost:${server.port:8080}/r/'
+---
+
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:postgresql://db:5432/monolito
